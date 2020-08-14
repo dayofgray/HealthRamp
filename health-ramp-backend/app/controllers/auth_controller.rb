@@ -3,20 +3,26 @@ class AuthController < ApplicationController
     def login
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
-            payload = {user_id: @user.id}
-            token = encode_token(payload)
-            render json: {user: user_serializer(@user), jwt: token, success: "Welcome back #{@user.name}"}
+            session[:user_id] = @user.id
+            render json: {user: @user.serialize_user, success: "Welcome back #{@user.name}"}, status: :ok
         else
-            render json: {failure: "Issue logging in"}
+            render json: {failure: "Issue logging in"}, status: :unauthorized
         end
     end
 
-    def logged_in_user
-        if session_user
-            render json: user_serializer(session_user)
+    def get_current_user
+        if current_user
+            render json: current_user.serialize_user, status: :ok
         else
             render json: {errors: "No user logged in"}
         end
+    end
+
+    def destroy
+        session.clear
+        render json: {
+            message: "Successfully logged out"
+          }, status: :ok
     end
 
 end

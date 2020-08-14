@@ -18,10 +18,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token')
-    if (token) {fetch('http://localhost:3001/current_user', {
+    fetch('http://localhost:3001/current_user', {
+      credentials: "include",
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Content-Type': `application/json`
       }
     })
     .then(resp => resp.json())
@@ -36,7 +36,6 @@ class App extends Component {
       }
     })
      .catch(console.log)
-    }
   }
 
   handleLoginFormChange = event => {
@@ -51,11 +50,19 @@ class App extends Component {
 
   logout = event => {
     event.preventDefault()
-    localStorage.removeItem('token')
+    fetch("http://localhost:3001/logout", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        credentials: "include"
+    })
     this.setState({
       currentUser: null
     })
   }
+    
 
   handleLoginFormSubmit = event => {
       event.preventDefault()
@@ -67,6 +74,7 @@ class App extends Component {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
           email,
           password
@@ -74,7 +82,6 @@ class App extends Component {
       })
       .then(resp => resp.json())
       .then(json => {
-        localStorage.setItem("token", json.jwt)
         const {id, email, name} = json.user
         this.setState({
           currentUser: {

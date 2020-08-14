@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :users
 
   post "/login" => "auth#login"
+  delete '/logout' => "auth#destroy"
 
-  get "/current_user" => "auth#logged_in_user"
+  get "/current_user" => "auth#get_current_user"
 
 
 end
