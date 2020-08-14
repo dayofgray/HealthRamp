@@ -3,6 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login'
 import Logout from './components/Logout'
+import Signup from './components/Signup'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import { Button } from 'react-bulma-components'
 
 class App extends Component {
 
@@ -27,7 +34,7 @@ class App extends Component {
     .then(resp => resp.json())
     .then(json => {
       if (json.errors) {
-        alert(json.errors)
+        
       }
       else {
         this.setState({
@@ -103,10 +110,25 @@ class App extends Component {
     return (
       <div className="App">
         Welcome {this.state.currentUser ? this.state.currentUser.name : "Unidentified User"}
+        <div>
         {this.state.currentUser ?
          <Logout logout={this.logout}/> :
-        <Login handleLoginFormSubmit={this.handleLoginFormSubmit} handleLoginFormChange={this.handleLoginFormChange} email={this.state.loginForm.email} password={this.state.loginForm.password}/>
+         <>
+        <Button renderAs="a" href="/signup">Signup</Button>
+        <Button renderAs="a" href="/login">Login</Button>
+        </>
         }
+        </div>
+        <Router>
+         <Switch>
+          <Route path="/signup">
+          <Signup/>
+          </Route>
+          <Route path="/login" component={Login}>
+          <Login handleLoginFormSubmit={this.handleLoginFormSubmit} handleLoginFormChange={this.handleLoginFormChange} email={this.state.loginForm.email} password={this.state.loginForm.password}/>
+          </Route>
+        </Switch>
+        </Router>
       </div>
     );
   }
