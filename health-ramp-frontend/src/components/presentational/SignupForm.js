@@ -3,14 +3,28 @@ import { signup } from "../../actions/currentUser"
 import { updateSignupForm } from "../../actions/signupForm"
 import { connect } from 'react-redux'
 
-const SignupForm = ({handleClose, show, signup}) => {
+const SignupForm = ({handleClose, show, signupForm, updateSignupForm, signup}) => {
+
+    const handleFormChange = event => {
+        const {name, value} = event.target
+        const updatedFormInfo = {
+            ...signupForm,
+            [name]: value
+        }
+        updateSignupForm(updatedFormInfo)
+    }
+    const handleSignupSubmit = event => {
+        event.preventDefault()
+        signup(signupForm)
+    }
+    const {email, name, password} = signupForm
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     return (
         <div className={showHideClassName}>
-            <form onSubmit={signup}>
-                <input type="text" name="email" placeholder="email"/> <br/>
-                <input type="text" name="name" placeholder="full name"/> <br/>
-                <input type="password" name="password" placeholder="password"/> <br/>
+            <form onSubmit={handleSignupSubmit}>
+                <input type="text" name="email" onChange={handleFormChange} placeholder="email" value={email}/> <br/>
+                <input type="text" name="name" onChange={handleFormChange} placeholder="full name" value={name}/> <br/>
+                <input type="password" name="password" onChange={handleFormChange} placeholder="password" value={password}/> <br/>
                 <input type="submit" value="Signup"/>
 
             </form>
@@ -25,4 +39,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default SignupForm
+export default connect(mapStateToProps, {updateSignupForm, signup})(SignupForm)
