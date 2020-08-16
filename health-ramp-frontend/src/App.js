@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Nav from './components/presentational/Nav.js'
-import Logout from './components/presentational/Logout'
-import AuthenticationContainer from './components/containers/AuthenticationContainer'
+import Home from './components/containers/Home'
 import { getCurrentUser } from './actions/currentUser'
 import { connect } from 'react-redux'
+
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Nav/>
         Welcome {loggedIn ? currentUser.name : "Unidentified User"}
-        <AuthenticationContainer/>
+        <Home loggedIn={loggedIn} currentUser={currentUser}/>
       </div>
     );
   }
