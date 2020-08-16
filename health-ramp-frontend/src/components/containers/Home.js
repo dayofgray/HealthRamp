@@ -5,6 +5,7 @@ import {
     Route
   } from 'react-router-dom';
 import AuthenticationContainer from './AuthenticationContainer'
+import AccountSettingsContainer from '../containers/AccountSettingsContainer'
 
 class Home extends Component {
 
@@ -18,7 +19,9 @@ class Home extends Component {
             return (
                 <Router>
                     <Switch>
-                    
+                        <Route path="/account">
+                            <AccountSettingsContainer currentUser={currentUser}/>
+                        </Route>
                     </Switch>
                 </Router>
             )
