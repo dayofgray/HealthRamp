@@ -32,7 +32,7 @@ export const login = credentials => {
             .then(resp => resp.json())
             .then(json => {
                 if (json.errors){
-                    alert(json.errors)
+                    console.log(json.errors)
                 } else {
                     dispatch(setCurrentUser(json.data.attributes))
                     dispatch(clearLoginForm())
@@ -60,7 +60,7 @@ export const signup = credentials => {
             .then(json => {
                 console.log(json.data)
                 if (json.errors){
-                    alert(json.errors)
+                    console.log(json.errors)
                 } else {
                     dispatch(setCurrentUser(json.data.attributes))
                     dispatch(clearSignupForm())
@@ -86,7 +86,7 @@ export const getCurrentUser = () => {
             .then(resp => resp.json())
             .then(json => {
                 if (json.errors){
-                    alert(json.errors)
+                    console.log(json.errors)
                 } else {
                     dispatch(setCurrentUser(json.data.attributes))
                 }
