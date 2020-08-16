@@ -17,6 +17,11 @@ class Nav extends Component {
                     <Navbar.Burger/>
                 </Navbar.Brand>
                 <Navbar.Menu >
+                    <Navbar.Container>
+                        <Navbar.Item href="/">
+                            Home
+                        </Navbar.Item>
+                    </Navbar.Container>
                     <Navbar.Container position="end">
                         {!loggedIn ? (
                         <>
