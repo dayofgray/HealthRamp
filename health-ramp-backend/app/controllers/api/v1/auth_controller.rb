@@ -1,10 +1,11 @@
-class AuthController < ApplicationController
+class Api::V1::AuthController < ApplicationController
 
     def login
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            render json: {user: @user.serialize_user, success: "Welcome back #{@user.name}"}, status: :ok
+            serialized_json = UserSerializer.new(@user).serialized_json
+            render json: {user: serialized_json, success: "Welcome back #{@user.name}"}, status: :ok
         else
             render json: {failure: "Issue logging in"}, status: :unauthorized
         end
@@ -12,7 +13,8 @@ class AuthController < ApplicationController
 
     def get_current_user
         if current_user
-            render json: current_user.serialize_user, status: :ok
+            serialized_json = UserSerializer.new(current_user).serialized_json
+            render json: serialized_json, status: :ok
         else
             render json: {errors: "No user logged in"}
         end

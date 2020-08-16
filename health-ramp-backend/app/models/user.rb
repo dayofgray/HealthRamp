@@ -5,12 +5,5 @@ class User < ApplicationRecord
     validates :email, :name, presence: true
     validates :email, uniqueness: true
 
-    def serialize_user
-        {
-            name: name,
-            email: email,
-            id: id
-          }
-    end
 
 end
