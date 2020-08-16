@@ -62,7 +62,7 @@ export const signup = credentials => {
                 if (json.errors){
                     alert(json.errors)
                 } else {
-                    dispatch(setCurrentUser(json.data))
+                    dispatch(setCurrentUser(json.data.attributes))
                     dispatch(clearSignupForm())
                 }
             })
