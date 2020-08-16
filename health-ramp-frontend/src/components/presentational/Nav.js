@@ -17,15 +17,18 @@ class Nav extends Component {
                     <Navbar.Burger/>
                 </Navbar.Brand>
                 <Navbar.Menu >
-                    <Navbar.Container>
-                        <Navbar.Item href="/login">
-                        Login
-                        </Navbar.Item>
+                    <Navbar.Container position="end">
+                        {!loggedIn ? (
+                        <>
                         <Navbar.Item href="/signup">
                         Signup
                         </Navbar.Item>
-                    </Navbar.Container>
-                    <Navbar.Container position="end">
+                        <Navbar.Item href="/login">
+                        Login
+                        </Navbar.Item>
+                        </>
+                        ) : (
+                        <>
                         <Navbar.Item dropdown hoverable>
                             <Navbar.Link renderAs="a" href="/account">
                                 My Account
@@ -36,6 +39,8 @@ class Nav extends Component {
                                 </Navbar.Item>
                             </Navbar.Dropdown>
                         </Navbar.Item>
+                        </>
+                        )}
                     </Navbar.Container>
 
                 </Navbar.Menu>
