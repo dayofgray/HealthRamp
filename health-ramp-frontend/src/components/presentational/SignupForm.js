@@ -1,4 +1,7 @@
 import React from 'react';
+import { signup } from "../../actions/currentUser"
+import { updateSignupForm } from "../../actions/signupForm"
+import { connect } from 'react-redux'
 
 const SignupForm = ({signup}) => {
     return (
@@ -13,5 +16,11 @@ const SignupForm = ({signup}) => {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+      signupForm: state.signupForm
+    }
+  }
 
 export default SignupForm

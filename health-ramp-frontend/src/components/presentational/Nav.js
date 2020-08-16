@@ -1,10 +1,13 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Navbar } from 'react-bulma-components'
 import Logo from '../../images/health-ramp-logo.png'
+import { connect } from 'react-redux'
+import { logout } from '../../actions/currentUser'
 
-export default class Nav extends Component {
+class Nav extends Component {
    
     render() {
+        const {loggedIn, logout} = this.props
         return (
             <Navbar color="primary">
                 <Navbar.Brand>
@@ -28,7 +31,7 @@ export default class Nav extends Component {
                                 My Account
                             </Navbar.Link>
                             <Navbar.Dropdown>
-                                <Navbar.Item href="/logout">
+                                <Navbar.Item onClick={logout}>
                                 Logout
                                 </Navbar.Item>
                             </Navbar.Dropdown>
@@ -40,3 +43,11 @@ export default class Nav extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        loggedIn: !!state.currentUser
+    }
+}
+
+export default connect(mapStateToProps, {logout})(Nav)

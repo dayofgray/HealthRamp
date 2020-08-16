@@ -5,9 +5,9 @@ class Api::V1::AuthController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             serialized_json = UserSerializer.new(@user).serialized_json
-            render json: {user: serialized_json, success: "Welcome back #{@user.name}"}, status: :ok
+            render json: serialized_json, status: :ok
         else
-            render json: {failure: "Issue logging in"}, status: :unauthorized
+            render json: {errors: "Issue logging in"}, status: :unauthorized
         end
     end
 
