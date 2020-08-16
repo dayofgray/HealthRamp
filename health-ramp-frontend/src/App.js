@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/current_user', {
+    fetch('http://localhost:3001/api/v1/current_user', {
       credentials: "include",
       headers: {
         'Content-Type': `application/json`
@@ -38,7 +38,7 @@ class App extends Component {
 
   logout = event => {
     event.preventDefault()
-    fetch("http://localhost:3001/logout", {
+    fetch("http://localhost:3001/api/v1/logout", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
