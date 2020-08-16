@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users
+  namespace :api do
+    namespace :v1 do
+      resources :users
+      
+    end
+  end
 
-  post "/login" => "auth#login"
-  delete '/logout' => "auth#destroy"
+  post "api/v1/login" => "api/v1/auth#login"
+  delete 'api/v1/logout' => "api/v1/auth#destroy"
 
-  get "/current_user" => "auth#get_current_user"
+  get "api/v1/current_user" => "api/v1/auth#get_current_user"
 
 
 end
