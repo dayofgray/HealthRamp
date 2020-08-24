@@ -1,0 +1,16 @@
+AllCops:
+  TargetRubyVersion: 2.6.1
+  DisplayCopNames: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'tmp/*'
+    - 'bin/bundle'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space

@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-  
+  before_action :set_user, only: %i[show update destroy]
+
   def index
     @users = User.all
 
@@ -37,11 +37,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.permit(:email, :password, :name)
-    end
+  def set_user
+    @user = User.find(params[:id])
   end
+
+  def user_params
+    params.permit(:email, :password, :name)
+  end
+end

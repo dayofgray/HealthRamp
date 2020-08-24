@@ -1,13 +1,12 @@
 class Api::V1::AuthController < ApplicationController
-
   def login
     @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
       serialized_json = UserSerializer.new(@user).serialized_json
       render json: serialized_json, status: :ok
     else
-      render json: {errors: "Issue logging in"}, status: :unauthorized
+      render json: {errors: 'Issue logging in'}, status: :unauthorized
     end
   end
 
@@ -16,15 +15,14 @@ class Api::V1::AuthController < ApplicationController
       serialized_json = UserSerializer.new(current_user).serialized_json
       render json: serialized_json, status: :ok
     else
-      render json: {errors: "No user logged in"}
+      render json: {errors: 'No user logged in'}
     end
   end
 
   def destroy
     session.clear
     render json: {
-        message: "Successfully logged out"
-      }, status: :ok
+      message: 'Successfully logged out'
+    }, status: :ok
   end
-
 end
