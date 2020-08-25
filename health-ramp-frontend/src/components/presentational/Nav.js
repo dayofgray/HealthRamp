@@ -7,7 +7,7 @@ import { logout } from '../../actions/currentUser'
 class Nav extends Component {
    
     render() {
-        const {loggedIn, logout} = this.props
+        const {loggedIn, logout, currentUser} = this.props
         return (
             <Navbar color="primary">
                 <Navbar.Brand>
@@ -20,6 +20,11 @@ class Nav extends Component {
                     <Navbar.Container>
                         <Navbar.Item href="/">
                             Home
+                        </Navbar.Item>
+                    </Navbar.Container>
+                    <Navbar.Container position="middle">
+                        <Navbar.Item renderAs="div">
+                          Welcome {loggedIn ? currentUser.data.name : "Unidentified User"}
                         </Navbar.Item>
                     </Navbar.Container>
                     <Navbar.Container position="end">
@@ -56,7 +61,7 @@ class Nav extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: !!state.currentUser
+        loggedIn: state.currentUser?.data
     }
 }
 

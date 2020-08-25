@@ -16,19 +16,20 @@ class App extends Component {
 
   render() {
     const {loggedIn, currentUser} = this.props
-    return (
-      <div className="App">
-        <Nav/>
-        Welcome {loggedIn ? currentUser.name : "Unidentified User"}
-        <Home loggedIn={loggedIn} currentUser={currentUser}/>
-      </div>
-    );
+      return (
+        <div className="App">
+          <Nav currentUser={currentUser}/>
+          {currentUser?.loading ?
+           "Loading" :
+           <Home loggedIn={loggedIn} currentUser={currentUser}/>}
+        </div>
+      );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    loggedIn: !!state.currentUser,
+    loggedIn: state.currentUser?.data,
     currentUser: state.currentUser
   }
 }

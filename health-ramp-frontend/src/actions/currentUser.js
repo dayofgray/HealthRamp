@@ -45,7 +45,6 @@ export const login = credentials => {
 
 export const signup = credentials => {
     return dispatch => {
-        //this would be intermediate state
       
             return fetch("http://localhost:3001/api/v1/signup", {
               method: "POST",
@@ -73,7 +72,7 @@ export const signup = credentials => {
 
 export const getCurrentUser = () => {
     return dispatch => {
-        //this would be intermediate state
+      dispatch({type: 'LOADING_CURRENT_USER'})
       
             return fetch("http://localhost:3001/api/v1/current_user", {
               method: "GET",
@@ -86,7 +85,7 @@ export const getCurrentUser = () => {
             .then(resp => resp.json())
             .then(json => {
                 if (json.errors){
-                    console.log(json.errors)
+                    dispatch(clearCurrentUser())
                 } else {
                     dispatch(setCurrentUser(json.data.attributes))
                 }
@@ -113,7 +112,7 @@ export const logout = () => {
         if (json.failure){
             alert(json.failure)
         } else {
-            dispatch(setCurrentUser(null))
+            dispatch(clearCurrentUser())
         }
         })
         .catch(console.log)
