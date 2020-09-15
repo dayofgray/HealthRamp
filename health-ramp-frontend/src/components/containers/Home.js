@@ -2,10 +2,12 @@ import React, { Component} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Link
   } from 'react-router-dom';
 import AuthenticationContainer from './AuthenticationContainer'
 import AccountSettingsContainer from '../containers/AccountSettingsContainer'
+import FoodContainer from './FoodContainer'
 
 class Home extends Component {
 
@@ -21,6 +23,9 @@ class Home extends Component {
                     <Switch>
                         <Route path="/account">
                             <AccountSettingsContainer currentUser={currentUser}/>
+                        </Route>
+                        <Route>
+                          <FoodContainer/>
                         </Route>
                     </Switch>
                 </Router>
