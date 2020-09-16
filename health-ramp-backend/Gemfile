@@ -20,6 +20,9 @@ gem 'dotenv-rails'
 # Serialize using FastJSON API
 gem 'fast_jsonapi'
 
+# Use faraday for API requests
+gem 'faraday'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
