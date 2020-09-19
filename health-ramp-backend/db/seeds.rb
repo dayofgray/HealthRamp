@@ -15,6 +15,7 @@ recipe2 = Recipe.create(name:"test second recipe")
 
 selection1= RecipeSelection.create(user_id: user1.id, recipe_id: recipe1.id, selection_date: Date.today)
 selection2= RecipeSelection.create(user_id: user2.id, recipe_id: recipe2.id, selection_date: Date.today)
+selection3= RecipeSelection.create(user_id: user1.id, recipe_id: recipe2.id, selection_date: Date.today)
 
 ingredient1 = Ingredient.create(name: "Flour")
 ingredient2 = Ingredient.create(name: "Milk")
