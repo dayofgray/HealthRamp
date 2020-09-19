@@ -39,13 +39,13 @@ class AuthenticationContainer extends Component {
 
     render() {
         return (
-        <>   
+        <div class="auth-container">   
             <Button onClick={this.showSignup}>Signup</Button>
             <Button onClick={this.showLogin}>Login</Button>
         
         {this.state.showLogin ? <LoginForm show={this.state.showLogin} handleClose={this.hideLogin}/> : null}
         {this.state.showSignup ? <SignupForm show={this.state.showSignup} handleClose={this.hideSignup}/> : null}
-        </>
+        </div>
         )
     }
 }

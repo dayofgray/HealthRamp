@@ -13,13 +13,13 @@ class FoodContainer extends Component {
   render() {
     return (
       <Router>
-        <nav>
+        <nav class="in-app-nav">
           <ul>
             <li>
-              <Link to="/recipes">Recipes</Link>
+              <Link to="/recipes">My Recipes for the Week</Link>
             </li>
             <li>
-              <Link to="/shoppinglist">Shppping List</Link>
+              <Link to="/shoppinglist">My Shopping List</Link>
             </li>
           </ul>
         </nav>

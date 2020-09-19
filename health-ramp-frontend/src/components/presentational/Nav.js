@@ -44,6 +44,12 @@ class Nav extends Component {
                                 My Account
                             </Navbar.Link>
                             <Navbar.Dropdown>
+                                <Navbar.Item renderAs="a" href="/recipes">
+                                  My Recipes
+                                </Navbar.Item>
+                                <Navbar.Item renderAs="a" href="/shoppinglist">
+                                My Shopping List
+                                </Navbar.Item>
                                 <Navbar.Item onClick={logout}>
                                 Logout
                                 </Navbar.Item>
