@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   validates :email, :name, presence: true
   validates :email, uniqueness: true
+
+  def current_week_recipes
+    self.recipe_selections.current_week.map(&:recipe)
+  end
 end
