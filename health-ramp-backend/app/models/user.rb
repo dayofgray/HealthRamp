@@ -8,6 +8,15 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def current_week_recipes
-    self.recipe_selections.current_week.map(&:recipe)
+    recipe_selections.current_week.map(&:recipe)
   end
+
+  def current_week_ingredients
+    current_week_recipes.map{|recipe| recipe.ingredients}
+  end
+
+  def shopping_list ##need to handle more complex accumulation of different measurement types
+    current_week_ingredients.uniq
+  end
+
 end
