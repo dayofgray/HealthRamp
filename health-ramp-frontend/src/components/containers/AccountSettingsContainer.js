@@ -29,7 +29,7 @@ class AccountSettingsContainer extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const id = this.props.currentUser.id
+        const id = this.props.currentUser.data.id
         fetch(`http://localhost:3001/api/v1/users/${id}`, {
             method: "PUT",
             headers: {
@@ -51,8 +51,8 @@ class AccountSettingsContainer extends Component {
           .catch(console.log)
     }
 
-    componentDidMount(){
-        let accountForm = Object.assign({}, this.props.currentUser)
+      componentDidMount(){
+        let accountForm = Object.assign({}, this.props.currentUser.data)
         delete accountForm.id
         this.setState({
             accountForm
