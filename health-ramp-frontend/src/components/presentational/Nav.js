@@ -28,16 +28,7 @@ class Nav extends Component {
                         </Navbar.Item>
                     </Navbar.Container>
                     <Navbar.Container position="end">
-                        {!loggedIn ? (
-                        <>
-                        <Navbar.Item href="/signup">
-                        Signup
-                        </Navbar.Item>
-                        <Navbar.Item href="/login">
-                        Login
-                        </Navbar.Item>
-                        </>
-                        ) : (
+                        {loggedIn ? (
                         <>
                         <Navbar.Item dropdown hoverable>
                             <Navbar.Link renderAs="a" href="/account">
@@ -56,7 +47,7 @@ class Nav extends Component {
                             </Navbar.Dropdown>
                         </Navbar.Item>
                         </>
-                        )}
+                        ) : null}
                     </Navbar.Container>
 
                 </Navbar.Menu>
