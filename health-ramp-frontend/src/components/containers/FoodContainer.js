@@ -15,10 +15,10 @@ class FoodContainer extends Component {
       <Router>
         <nav class="in-app-nav">
           <ul>
-            <li>
+            <li class="recipe-link">
               <Link to="/recipes">My Recipes for the Week</Link>
             </li>
-            <li>
+            <li class="shopping-list-link">
               <Link to="/shoppinglist">My Shopping List</Link>
             </li>
           </ul>

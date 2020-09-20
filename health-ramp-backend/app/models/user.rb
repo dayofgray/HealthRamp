@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def shopping_list ##need to handle more complex accumulation of different measurement types
-    current_week_ingredients.uniq
+    current_week_ingredients.flatten.uniq
   end
 
 end

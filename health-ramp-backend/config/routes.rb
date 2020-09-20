@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: %i[show update]
+      resources :recipes, only: %i[index]
     end
   end
+
+  get 'api/v1/shoppinglist' => 'api/v1/ingredients#index'
 
   post 'api/v1/login' => 'api/v1/auth#login'
   delete 'api/v1/logout' => 'api/v1/auth#destroy'
