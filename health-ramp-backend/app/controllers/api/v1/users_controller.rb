@@ -18,6 +18,7 @@ class Api::V1::UsersController < ApplicationController
       serialized_json = UserSerializer.new(@user).serialized_json
       session[:user_id] = @user.id
       render json: serialized_json, status: :ok
+      RecipeCreator.create_initial_recipes(@user)
     else
       render json: @user.errors, status: :unprocessable_entity
     end

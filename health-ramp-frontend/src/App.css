@@ -63,3 +63,11 @@
 .display-none {
   display: none;
 }
+
+.recipe-link {
+  float: left;
+}
+
+.shopping-list-link {
+  float: right;
+}
