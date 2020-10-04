@@ -71,3 +71,37 @@
 .shopping-list-link {
   float: right;
 }
+
+
+div.list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+div.recipe-tile {
+  box-shadow: 10px 10px #cacaca;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+div.recipe-tile p, ul {
+  text-align: left;
+}
+
+div.ingredient-tile {
+  box-shadow: 10px 10px #cacaca;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.bold {
+  font-weight: bold;
+}

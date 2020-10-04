@@ -23,6 +23,7 @@ class FoodContainer extends Component {
             </li>
           </ul>
         </nav>
+        <div class="list-container">
         <Switch>
             <Route path="/shoppinglist">
               <ShoppingListContainer/>
@@ -31,6 +32,7 @@ class FoodContainer extends Component {
               <RecipeContainer/>
             </Route>
         </Switch>
+        </div>
       </Router>
     )
   }
