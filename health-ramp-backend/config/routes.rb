@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get 'api/v1/shoppinglist' => 'api/v1/ingredients#index'
+  put 'api/v1/shoppinglistitems/:id' => 'api/v1/shopping_list_items#update'
 
   post 'api/v1/login' => 'api/v1/auth#login'
   delete 'api/v1/logout' => 'api/v1/auth#destroy'
