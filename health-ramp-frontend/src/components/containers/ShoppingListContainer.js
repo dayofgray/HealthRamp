@@ -13,7 +13,7 @@ class ShoppingListContainer extends Component {
   render() {
     const {shoppingList} = this.state
     return (
-    shoppingList.map((ingredient) => <Ingredient name={ingredient.name} key={ingredient.id}/>)
+    shoppingList.map((item) => <Ingredient name={item.ingredient.name} key={item.id} status={item.purchased}/>)
     )
   }
 
