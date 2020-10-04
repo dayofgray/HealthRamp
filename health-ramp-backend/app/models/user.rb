@@ -9,11 +9,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def current_week_recipes
-    recipe_selections.current_week
+    recipe_selections.current_week.map(&:recipe)
   end
 
   def shopping_list ##need to handle more complex accumulation of different measurement types
-    current_week_recipes.map(&:shopping_list_items).flatten
+    recipe_selections.current_week.map(&:shopping_list_items).flatten
   end
 
 end
