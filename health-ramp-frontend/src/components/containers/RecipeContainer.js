@@ -13,7 +13,7 @@ class RecipeContainer extends Component {
   render() {
     const {recipes} = this.state
     return (
-    recipes.map((r) => <Recipe name={r.name} key={r.id}/>)
+    recipes.map((r) => <Recipe name={r.name} key={r.id} ingredients={r.ingredients}/>)
     )
   }
 
