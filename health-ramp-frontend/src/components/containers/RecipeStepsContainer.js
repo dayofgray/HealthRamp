@@ -13,7 +13,7 @@ class RecipeStepsContainer extends Component {
   render() {
     const {steps} = this.state
     return (
-    <div className="centered">
+    <div className="list-container">
       {steps.map((step) => <RecipeStep step={step}/>)}
     </div>
     )

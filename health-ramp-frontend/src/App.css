@@ -102,6 +102,14 @@ div.ingredient-tile {
   align-items: center;
 }
 
+div.step-tile {
+  box-shadow: 10px 10px #cacaca;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+}
+
 .bold {
   font-weight: bold;
 }
