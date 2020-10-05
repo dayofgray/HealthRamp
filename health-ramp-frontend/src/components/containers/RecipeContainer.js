@@ -10,10 +10,15 @@ class RecipeContainer extends Component {
     }
   }
 
+  onClick(id) {
+    const url = "http://localhost:3000/recipes/" + id
+    window.location.replace(url)
+  }
+
   render() {
     const {recipes} = this.state
     return (
-    recipes.map((r) => <Recipe name={r.name} key={r.id} ingredients={r.ingredients}/>)
+    recipes.map((r) => <Recipe name={r.name} key={r.id} ingredients={r.ingredients} onClick={this.onClick} id={r.id}/>)
     )
   }
 

@@ -7,6 +7,7 @@ import {
   } from 'react-router-dom';
 import ShoppingListContainer from './ShoppingListContainer'
 import RecipeContainer from './RecipeContainer'
+import RecipeStepsContainer from './RecipeStepsContainer'
 
 class FoodContainer extends Component {
 
@@ -28,6 +29,7 @@ class FoodContainer extends Component {
             <Route path="/shoppinglist">
               <ShoppingListContainer/>
             </Route>
+            <Route exact path="/recipes/:id" component={RecipeStepsContainer}/>
             <Route path={["/", "/recipes"]}>
               <RecipeContainer/>
             </Route>
